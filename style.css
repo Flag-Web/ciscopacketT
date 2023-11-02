@@ -1,0 +1,303 @@
+header{
+    display: flex;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 10%;
+    flex-direction: column;
+    background-color: #78a7c6;
+    /* background-color: brown; */
+}
+/* header .firstnav{
+    display: flex;
+    flex-direction: column;
+} */
+.logos{ 
+    display: flex;
+    flex-direction: row;
+    padding-left: 595px;
+    font-family: cursive;
+}
+.logos img{
+    width: 102px;
+    height: 64px;
+}
+
+header .secondnav{
+    position: fixed;
+    top: 5px;
+    width: 254px;
+    height: 90px;
+    
+    /* background-color: darkgrey; */
+}
+header .secondnav button{
+    background-color: #78a7c6;
+    border: none;
+}
+header .secondnav img{
+    height: 50px;
+}
+header .ssecondnav{
+    display: none;
+}
+main{
+    padding-top: 0px;
+
+    display: flex;
+    flex-direction: row;
+    background-color: #efefef;
+    /* background-color: #d0d1d1; */
+    /* background-image: url(../image/IMG-20231019-WA0013.jpg); */
+}
+main img{
+    height:350px;
+}
+main p,h1,h3,h2,h4{
+    display: flex;
+    text-align: left;
+}
+main .rightpart{
+    width: 20%;
+    height: 572px;
+    top:65px;
+    position: fixed;
+    /* z-index: 1000; */
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: #aca6a6;
+    color: blueviolet;
+}
+main .rightpart a{
+    text-decoration: none;
+    color: aliceblue;
+}
+main .rightpart ul{
+    text-decoration: none;
+}
+main .leftpart{
+    display: flex;
+    flex-direction: column;
+    line-height: 30px;
+    row-gap: 50px;
+    margin-left: 300px;
+    text-align: center;
+}
+main .leftpart .first{
+    margin-left: 0px;
+}
+main .leftpart .first img{
+    width: 100%;
+    height: 100%;
+}
+main .leftpart #CORRECTIONS{
+    padding-bottom: 40px;
+}
+main .leftpart p{
+    font-size: 20px;
+}
+main .leftpart .tpeone{
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+main .leftpart .tpeone .phasetpe1{
+    display: flex;
+    flex-direction: column;
+    row-gap: 100px;
+}
+main .leftpart .tpeone .phasetpe1 .phase1{
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+}
+main .leftpart .prop{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+}
+/* main .leftpart .prop img{
+    height: 600px;
+    width: 900px;
+} */
+main .leftpart .prop img{
+    width: 80%;
+    height: 100%;
+    display: flex;
+}
+.enoce1{
+    display: flex;
+    text-align: left;
+}
+.footer{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d4b571;
+    color: white;
+    width: 100%;
+    height: 100%;
+    margin-top: 150px;
+} 
+.footer button{
+    width: 280px;
+    height: 60px;
+    border-radius: 40px;
+    background-color: #056bff;
+    color: white;
+    border-style: none;
+    margin-bottom: 100px;
+    margin-left: 50px;
+}
+
+.footer .imgflagg {
+    padding-left: 50px;
+    padding-top: 35px;
+    padding-bottom: 55px;
+}
+.footer .imgflagg img{
+    width: 900px;
+    height: 150px;
+} 
+.footer .contact{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+}
+
+.footer .contact a{
+    text-decoration: none;
+    color: aliceblue;
+}
+/* footer h5,footer h1,footer p,footer button,footer .imgfleur{
+    margin-top: 20px;
+} */
+
+@media only screen and (max-width: 700px){
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+   
+    header{
+        width: 100%;
+    }
+    header .firstnav{
+        display: flex;
+        flex-direction: column;
+    }
+    .logos{ 
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding-left: 0px;
+        
+    }
+    .logos img{
+        width: 102px;
+        height: 69px;
+    }
+    header .secondnav{
+        display: none;
+    }
+    header .ssecondnav{
+        display: flex;
+        position: fixed;
+        top: 5px;
+        width: 254px;
+        height: 90px;
+        padding-left: 15px;
+        /* background-color: darkgrey; */
+    }
+    header .ssecondnav button{
+      
+        background-color: #78a7c6;
+        border: none;
+    }
+    header .ssecondnav img{
+        height: 50px;
+    }
+    
+    main{
+        line-height: 30px;
+    }
+    main img{
+        height: 170px;
+    }
+    main .leftpart{   
+        margin-top: 300px;
+        margin-left: 0px;
+    }
+    main .leftpart .first{
+        margin-left: 0px;
+    }
+    
+    main .rightpart{
+        width: 100%;
+        padding-right:30px;
+        padding-left: 30px;
+        height: 200px;
+        top:65px;
+        position: fixed;
+        /* z-index: 1000; */
+        overflow-y: scroll;
+        overflow-x: hidden;
+       
+        color: blueviolet;
+    }
+    main .leftpart{
+        display: flex;
+        flex-direction: column;
+        line-height: 40px;
+        row-gap: 100px;
+        /* height: 10000px; */
+        /* background-color: blueviolet; */
+        /* margin-left: 300px; */
+       
+        text-align: center;
+        width: 100%;
+        padding-right:30px;
+        padding-left: 30px;
+    }
+    main .leftpart #enon ,main .leftpart #CORRECTIONS{
+        display: flex;
+        flex-direction:column;
+        row-gap: 50px;
+    }
+    main .leftpart #enon #travailpU,  main .leftpart #enon #travailpD, main .leftpart #CORRECTIONS #TPE2,  main .leftpart #CORRECTIONS #TPE2{
+        display: flex;
+        flex-direction:column;
+        row-gap: 25px;
+    }
+   
+    main .leftpart .prop img{
+        width: 100%;
+        height: 100%;
+        display: flex;
+    }
+    .footer{
+       
+        padding-right:0px;
+        padding-left: 0px;
+        margin-top: 150px;
+    } 
+    .footer button{
+        width: 250px;
+        margin-bottom: 50px;
+    }
+    
+    .footer .imgflagg {
+        padding-top: 35px;
+        padding-bottom: 55px;
+       
+    }
+    .footer .imgflagg img{
+        width: 200px;
+        height: 150px;
+        padding-left: 0px;
+    } 
+}

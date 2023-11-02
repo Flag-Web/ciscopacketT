@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body x-data="{liste: true,enonce: false,secondphase:false,firstphase: false,corrections: false, marginLeft: '300px',marginTop: '300px' }">
+    <header>
+        <div class="firstnav">
+            <div class="logos" >
+                <img src="../image/IMG-20231019-WA0012.jpg" alt="">
+            </div>
+        </div>
+        <div  class="secondnav">
+            <div @click="liste=!liste, marginLeft= (marginLeft === '300px') ? '0': '300px'; $refs.TARGET.style.marginLeft =marginLeft">
+                <button > <img src="../image/barsot.png" alt=""> </button>
+            </div>
+        </div>
+        <div  class="ssecondnav">
+            <div @click="liste=!liste, marginTop= (marginTop === '300px') ? '0': '300px'; $refs.TARGET.style.marginTop =marginTop">
+                <button >  <img src="../image/barsot.png" alt=""> </button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section x-show="liste" class="rightpart">
+            <h1>  SOMMAIRE </h1>
+            <ul>
+                <li>  <a href="#intro">INTRODUCTION</a> </li>
+                <li>
+                    <a href="#enon"
+                     @click="enonce=!enonce">
+                     ENONCE
+                     <ul x-show="enonce">
+                        <li>
+                            <a href="#travailpU">  TRAVAIL PRATIQUE N°1  </a>
+                        </li>
+                        <li>
+                            <a href="#travailpD">  TRAVAIL PRATIQUE N°2  </a>
+                        </li>
+                     </ul>
+                    </a>
+                </li>
+                <li>
+                    <a href="#CORRECTIONS" @click="corrections=!corrections">
+                        CORRECTIONS DES TP
+                        <ul x-show="corrections">
+                            <li>
+                                <a href="#TPE1" @click="firstphase=!firstphase">
+                                    TRAVAIL PRATIQUE N°1
+                                    <ul x-show="firstphase">
+                                        <li>
+                                            <a href="#phase1"> CREATION DE L’INFRASTRUCTURE ET  CONFIGURATION DES ADRESSES IP DES PC  </a>
+                                        </li>
+                                        <li>
+                                            <a href="#phase23">  CONFIGURATION DES PASSERELLES DES PC ET DES INTERFACES DES ROUTEURS </a>
+                                        </li>
+                                        <li>
+                                            <a href="#phase4">  CONFIGURATION DU PROTOCOLE DE ROUTAGE </a>
+                                        </li>
+                                    </ul>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#TPE2" @click="secondphase=!secondphase">
+                                    TRAVAIL PRATIQUE N°2
+                                    <ul x-show="secondphase">
+                                        <li>
+                                            <a href="#phas1">  SCHEMA DE LA TOPOLOGIE PHYSIQUE  </a>
+                                        </li>
+                                        <li>
+                                            <a href="#phas2">  ADRESSAGE DES MACHINES </a>
+                                        </li>
+                                        <li>
+                                            <a href="#phas3"> CONFIGURATION DES INTERFACES DES ROUTEURS </a>
+                                        </li>
+                                        <li>
+                                            <a href="#phas4">  CONFIGURATION DES TABLES DE ROUTAGES </a>
+                                        </li>
+                                        <li>
+                                            <a href="#phas5"> CONFIGURATION DU SERVEUR WEB ET DNS </a>
+                                        </li>
+                                    </ul>
+                                </a>
+                            </li>    
+                        </ul>
+                    </a>   
+                </li>
+            </ul>
+        </section>
+        <section  :style="{ 'margin-left': margin}" x-ref="TARGET"   class="leftpart">
+            <div class="first">
+                <img src="../image/packet-tracer-screenshot.jpg" alt="">
+            </div>
+            <div id="intro">
+                <h1> INTRODUCTION </h1>
+                <p>Ce document est un rapport du travail pratique effectué dans Cisco Packet tracer sur la simulation des réseaux. Nous avons principalement utilisé les fonctions du logiciel qui est un simulateur de réseaux sous forme schématique permettant de configurer les différents composants d’un réseau informatique sans avoir à utiliser les appareils réels. Pour suite il a été question de créer quelques infrastructures réseaux et de les tester ; d’où le sujet de notre travail. </p>
+            </div>
+            <div id="enon">
+                <h1>  ENONCE DES TP </h1>
+                <div id="travailpU">
+                    <h2>  TP 1 : ANALYSE DES TRAMES D’UN PING </h2>
+                    <p>  Soit le schema suivant</p>
+                    <img src="../image/fourteth.png" alt="IMG">
+                    <h3>  PHASE 1 : CREATION DE L’INFRASTRUCTURE ET  CONFIGURATION DES ADRESSES IP DES PC  </h3>
+                    <p class="enoce1">
+                        1. Dessiner l'infrastructure réseau ci-dessus en prenant 3 routeurs génériques et 3 switch 2960-24, les câbles entre routeur seront de type série.   <br>
+                        2. Faire glisser votre souris sur un switch. Quelles sont les caractéristiques des ports  <br>
+                        3. De même, quelles sont les caractéristiques des ports du routeur ? Comparer avec celles des ports du switch <br>
+                        4. combien de sous réseaux comporte ce réseau<br>
+                        5. Configurer les adresses IP des PC (masque en 255.255.255.0)
+                        A. LAN1 : Laptop1, PC1 adresses : 192.168.1.2, 192.168.1.3. Donner l'adresse réseau du LAN1
+                        B. LAN2 : PC2, PC3 adresses : 192.168.2.2, 192.168.2.3. Donner l'adresse réseau du LAN2
+                        C. LAN3: PC0, laptop 0 adresses : 192.168.3.2, 192.168.3.3. Donner l'adresse réseau du LAN3
+                        6. Vérifier les connectivités locales par des ping à l’intérieur de chaque réseau local
+                    </p>
+                    <h3>  PHASE 2: CONFIGURATION DES PASSERELLES DES PC  </h3>
+                    <p class="enoce1">
+                        Lorsqu’un ordinateur envoie un message à une machine dont il connaît l’adresse IP, il doit préalablement déterminer son adresse physique pour remplir les informations de couche 2. Il réalise cette opération par l’envoi d’une commande ARP en broadcast. Lorsqu'on veut communiquer avec une machine distante (sur Internet par exemple), on ne peut utiliser cette possibilité car cela reviendrait à envoyer un broadcast sur tout le réseau Internet et conduirait à une saturation rapide. On va donc utiliser le routeur, pour réaliser l’envoi physique. D’où l’utilité de définir sur chaque poste une passerelle (notre routeur). Le PC utilise l'adresse physique du routeur lorsque le poste destinataire n'est pas dans le même sous-réseau que lui. Il la détermine grâce à l'adresse IP de passerelle et avec un ARP. L’adresse d’une passerelle appartient donc au même sous-réseau que le poste. Configurer les passerelles des PC avec les adresses IP adéquates : </p>
+                    <h3>  PHASE 3: CONFIGURATION DES INTERFACES DES ROUTEURS </h3>
+                    <p class="enoce1">
+                        A ce stade-là, les connexions avec les routeurs sont rouges car les routeurs ne sont pas encore configurés (contrairement à un Hub ou un switch qui sans configuration préalable peut fonctionner) <br>
+                        1. Cliquer sur le routeur2 (du schéma ci-dessus). Sous l'onglet "Physical", vous pouvez éteindre le routeur, ajouter des cartes d'extension<br>
+                        Sous l'onglet "CLI", vous pouvez configurer le routeur par des commandes réelles (seule interface présente sur de vrais routeurs). <br>
+                        2. Faire glisser votre souris sur le port du routeur4 coté switch1. Noter le numéro de l'interface. <br>
+                        3. Configurer l'adresse IP de cette interface <br>
+                        4. Faire glisser votre souris sur le port du routeur2 coté routeur0. Noter le numéro de l'interface. Puis faire de même pour configurer l'adresse de l'interface (200.168.1.1 masque 255.255.255.0) <br>
+                        5. Compléter la configuration en définissant une "Clock rate" (horloge de la liaison série
+                        synchrone) à 56000 bits/sec.  <br>
+                        6. Refaire les mêmes opérations avec les autres routeurs (adresse 200.168.1.2 pour l'interface du routeur0 côté routeur2 ; adresses 201.168.1.1 et 201.168.1.2 pour la liaison entre le routeur2 et le routeur1).  <br>
+                        7. Vérifier les connectivités en mode temps réel par des ping entre PC se trouvant dans des réseaux locaux différents. Que constatez-vous ? A quel endroit la communication est bloquée ?
+                    </p>
+                </div>
+                <div id="travailpD">
+                    <h2>  TP 2 : ADRESSAGE DYNAMIQUE ET STATIQUE </h2>
+                    <p class="enoce1"> Soit le schema suivant
+                    </p>
+                    <img src="../image/fitheth.png" alt="">
+                    <h3> A. SHCEMA DE LA TOPOLOGIE PHYSIQUE </h3>
+                    <p class="enoce1">
+                        Realiser le schema ci-dessous en mettant un cable série entre le routeur 0 et le routeur1
+                    </p>
+                    <h3>  B. ADDRESSAGE DES MACHINE  </h3>
+                    <p class="enoce1">
+                        1. Realiser l’adressage dynamique du LAN (195.45.23.0) avec le serveur DHCP <br>
+                        2. Realiser l’adressage statique du LAN (192.12.45.0) <br>
+                        3. Tester la communication entre les machines dans le même LAN avec les ping et en mode simulation  <br>
+                    </p>
+                    <h3> C. CONFIGURATION DES INTERFACES DES ROUTEURS </h3>
+                    <h4>  a.Mode graphique </h4>
+                    <p class="enoce1">
+                        On double-clique le routeur en question et Sous l'onglet "config", vous pouvez configurer le interfaces du routeur en donnant une address IP valide a chaque interface du routeur
+                    </p>
+                    <h4> b. Configurer le routeur0 à partir du PC1 à l’aide d’un câblé console  </h4>
+                    <p class="enoce1">
+                        1. Reprendre le schema de la topologie physique du réseau précédant
+                        2. Configurer les interfaces du routeur0 à partir du PC1 à l’aide d’un câblé console
+                        3. Configurer les interfaces du routeur1 à partir du PC2 à l’aide d’un câblé console
+                    </p>
+                    <h4>  c. Configurer des routeurs directement dans l’onglet CLI </h4>
+                    <p class="enoce1">
+                        1. Configurer le routeur0 directement dans l’onglet CLI du routeur0
+                        2. Configurer le routeur1 directement dans l’onglet CLI du routeur1
+                    </p>
+                    <h3>  D. CONFIGURATION DES TABLES DE ROUTAGE DES ROUTEURS </h3>
+                    <p class="enoce1">
+                        1. Configurer la table de routage des deux routeurs de manière statique <br>
+                        4. Reprenez le schema ci-dessous <br>
+                        5. Configurer la table de routage des deux routeurs de manière dynamique en utilisant le protocole RIP2 <br>
+                    </p>
+                    <h3>  E. CONFIGURATION DU SERVEUR WEB ET DNS </h3>
+                    <p class="enoce1">
+                        1- Créer un site web statique de votre choix et héberger le dans le serveur web <br> 
+                        Rq : pour le site web l’accent sera mis sur le design de l’interface <br>
+                        2- Essayer d’accéder au site web à partir du pc0 via le web browser du menu Desktop<br>
+                        3- Configurer le serveur DNS en faisant une correspondance entre l’adresse IP du serveur web et le non du domaine « ud.fs.math-info.inf122 <br>
+                        4- Essayer à nouveau d’accéder d’accéder au site web à partir du pc0 via le web browser du menu Desktop en tapant le nom du domain  <br>
+                    </p>
+                </div> 
+            </div>
+            <div id="CORRECTIONS">
+                <h1>  CORRECTIONS DES TP  </h1>
+                <div id="TPE1" class="tpeone">
+                    <h1> TP 1 : ANALYSE DES TRAMES D’UN PING </h1>
+                    <div class="phasetpe1" >
+                        <div id="phase1" class="phase1">
+                            <h2> PHASE 1 : CREATION DE L’INFRASTRUCTURE ET  
+                                CONFIGURATION DES ADRESSES IP DES PC  </h2>
+                            <div>
+                                <h3> 1.DESSINONS L’INFRASTRUCTURE RESEAU </h3>
+                                <img src="../image/fisrst.png" alt="image de l'infratructure">
+                            </div>
+                            <div>
+                                <h3> 2.CARACTERISTIQUES DES PORTS D’UN SWITCH </h3>
+                                <p>
+                                    Les ports d’un switch ont les caractéristiques suivantes : <br>
+                                     . Link : qui détermine si un port est actif ou pas en marquant « up » lorsqu’il est actif et « down » lorsqu’il ne l’est pas. <br>
+                                    . VLAN : détermine le nombre de réseau indépendant (d’adresse réseau différent) connecte sur un switch
+                                    . <br>.L’adresse MAC : adresse physique qui caractérise de façon unique chaque port du switch dans un réseau. 
+                                </p>
+                            </div>
+                            <div>
+                                <h3> 3.CARACTERISTIQUES DES PORTS D’UN ROUTEUR </h3>
+                                <p>
+                                    Les ports d’un switch ont les caractéristiques suivantes : <br> 
+                                    . Link : qui détermine si un port est actif ou pas en marquant « up » lorsqu’il est actif et « down » lorsqu’il ne l’est pas. <br> 
+                                    . L’adresse MAC : adresse physique qui caractérise de façon unique chaque port du switch dans un réseau. <br>
+                                     . L’adresse IP : détermine de façon unique chaque port du routeur dans un réseau. <br> 
+                                </p>
+                            </div>
+                            <div>
+                                <h3>  4.COMPARONS LES PORTS DU ROUTEUR A CELUI DU SWITCH </h3>
+                                <p>
+                                    4.Le réseau présente ci-dessus comporte 5 sous réseaux à savoir : <br>. Le LAN1 avec pour adresse réseau 192.168.1.0 <br>. Le LAN2 avec pour adresse réseau 192.168.2.0 <br>. Le LAN3 avec pour adresse réseau 192.168.3.0 <br>Et les deux sous réseaux compris entre les routeurs qui sont : <br>. Le sous réseau ayant pour adresse réseau 200.168.1.0 <br>. Le sous réseau ayant pour adresse réseau 201.168.1.0
+                                </p>
+                            </div>
+                            <div>
+                                <h3>   5. CONFIGURATION DES ADRESSES IP </h3>
+                                <p>
+                                    La configuration des adresses IP se fait de la manière suivante : <br> 1.entrer dans l’interface de la machine <br> 2.cliquer sur l’onglet « DESKTOP » <br> 3.cliquer sur « IP CONFIGURATION » <br> 4. enfin entrer statiquement l’adresses de la machine. <br> Les interfaces déjà adresse de trois machines prises dans les trois différents sous réseaux sont présentes dans les images ci-dessous :                               
+                                </p>
+                                <div class="prop" >
+                                    <span> PC1 DU LAN 1  </span>
+                                    <img src="../image/thirteen.png" alt="" >
+                                </div> <br><br>
+                                <div class="prop">
+                                    <span>  PC3 DU LAN 2 </span>
+                                    <img src="../image/third.png" alt="" >
+                                </div> <br> <br>
+                                <div class="prop">
+                                    <span> PC0 DU LAN 3 </span>
+                                    <img src="../image/fourth.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="phase23">
+                            <h2>
+                                PHASE 2 ET 3 : CONFIGURATION DES PASSERELLES DES PC ET DES INTERFACES DES ROUTEURS
+                            </h2>
+                            <p>
+                                Pour la configuration des passerelles des interfaces des routeurs nous avons utilisés le mode de configuration avec de commandes réelles. Les images suivantes présentent les différentes commandes utilisée pour réaliser ces différentes configurations.
+                            </p>
+                            <div class="prop">
+                                <span>   CONFIGURATION DU ROUTEUR 2 </span>
+                                <img src="../image/fifteen.png" alt="">
+                            </div> <br> <br>
+                            <div class="prop">
+                                <span>   CONFIGURATION DU ROUTEUR 1 </span>
+                                <img src="../image/seventh.png" alt="">
+                            </div> <br> <br>
+                            <div class="prop">
+                                <span>   CONFIGURATION DU ROUTEUR 0 </span>
+                                <img src="../image/eighth.png" alt="">
+                            </div>
+                            . En vérifiant la connectivité en mode temps réel dans les réseaux se trouvant dans des réseaux locaux différents on constate que les paquets (données) ne peuvent pas circuler entre ces réseaux. La communication est bloquée au niveau des routeurs car ils n’ont pas été adressé.
+                        </div>
+                        <div id="phase4">
+                            <h2>  PHASE 4 : CONFIGURATION DU PROTOCOLE DE ROUTAGE</h2>
+                            <h3>  1.CONFIGURATION A L’AIDE DE LA COMMANDE RIP DANS LE MODE DE CONFIGURATION </h3>
+                            <p>
+                                Pour cette configuration, nous suivons les étapes suivantes : <br>
+                                . Entrer dans l’interface du routeur <br>
+                                . Puis cliquer sur l’onglet « CONFIG » <br>
+                                . Ensuite cliquer sur « RIP » <br>
+                                . Entrer l’adresse des réseaux directement connecte au routeur <br>
+                                . Enfin cliquer sur « ADD » <br>
+                                Les images ci-dessous présentent cette interface et la commande RIP sur les différents routeurs:                             
+                            </p>
+                            <div>
+                                <span class="prop">  ROUTAGE DU ROUTEUR 0 </span>
+                                <img src="../image/tenth.png" alt="">
+                            </div> <br>
+                            <div class="prop">
+                                <span>   ROUTAGE DU ROUTEUR 1 </span>
+                                <img src="../image/emeventh.png" alt=""
+                                class="A">
+                            </div> <br> <br>
+                            <div class="prop">
+                                <span>  ROUTAGE DU ROUTEUR 2 </span>
+                                <img src="../image/twelveth.png" alt=""  >
+                            </div> <br> <br>
+                            <p>
+                                2.En vérifiant la connectivité en mode temps réel par des pings, on constate que les paquets(données) peuvent circuler sans problème entre les ordinateurs des différents réseaux.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div id="TPE2">
+                    <h1>  TP 2 : ADRESSAGE DYNAMIQUE ET STATIQUE </h1>
+                    <div id="phas1">
+                        <h2>  A.	SCHEMA DE LA TOPOLOGIE PHYSIQUE </h2>
+                        <h3>  1. AJOUT DU PORT SERIE POUR CONNECTER LE CABLE EN SERIE </h3>
+                        <img src="../image/seventeth.png" alt="">
+                        <h3>   2. REALISATION DU SCHEMA </h3>
+                        <img src="../image/heighteth.png" alt="">
+                    </div>
+                    <div id="phas2" class="prop">
+                        <h2> B. ADRESSAGE DES MACHINES </h2>
+                        <h3>  1. REALISATION DE L’ADRESSAGE DYNAMIQUE DU LAN (195.45.23.0) AVEC LE SERVEUR DHCP </h3>
+                        <p>
+                            Pour réaliser cet adressage nous allons suivre les étapes suivantes: <br>
+                            . Entrer dans l’interface du serveur DHCP, puis cliquer sur « IP CONFIG », et enfin entrer l’adresse l’adresse du serveur DHCP
+                        </p>
+                        <img src="../image/nineteth.png" alt="" >
+                        <p>
+                            . Attribuer dynamiquement les adresses au réseau en allant dans l’interface de la machine, ensuite cliquer sur « DESKTOP », puis sur « IPCONFIG » et enfin sur « DHCP »
+                        </p>
+                        <img src="../image/twentieth.png" alt="" >
+                        <h3>  2. REALISATION DE L’ADRESSAGE STATIQUE DU LAN (192.12.45.23) </h3>
+                        <p>
+                            Pour réaliser cet adressage on suit l’étape suivante : <br>
+                            . Entrer dans l’interface de la machine <br>
+                            . Cliquer sur « DESKTOP » <br>
+                            . Puis sur « IP CONFIG » <br>
+                            .et enfin sur « STATIC » et entrer l’adresse de la machine
+                        </p>
+                        <img src="../image/thirtieth.png" alt="" >
+                        <h3>  3.TESTER LES COMMUNICATIONS ENNTRES LES MACHINES D’UN MEME LAN </h3>
+                        <h4>  a.AVEC LES PING </h4>
+                        <img src="../image/fourthieth.png" alt="">
+                        <p>  .Laptop 0 du LAN « (195.45.23.0) </p>
+                        <img src="../image/fifthieth.png" alt="">
+                        <h4>  b.EN MODE SIMULATION </h4>
+                        <img src="../image/sixtieth.png" alt="" >
+                    </div>
+                    <div id="phas3" class="prop">
+                        <h2> C. CONFIGURATION DES INTERFACES DES ROUTEURS</h2>
+                        <h3>   1. MODE GRAPHIQUE </h3>
+                        <p>
+                            La configuration des interfaces des routeurs en mode graphique se fait de la manière suivante : <br>
+                            . Entrer dans l’interface du routeur  <br>
+                            . Puis dans le l’onglet « CONFIG » <br>
+                            . Ensuite cliquer sur l’interface que l’on souhaite configurer <br>
+                            . Entrer enfin l’adresse de cette interface et appuyer sur « ENTER »
+                        </p>
+                        <p>  .CONFIGURATION  DU ROUTEUR 0 </p>
+                        <img src="../image/seventieth.png" alt="">
+                        <p> .C0NFIGURATION DU ROUTEUR 1 </p>
+                        <img src="../image/eightieth.png" alt="">
+                        <h3> 2.CONFIGURATION A L’AIDE D’UN CABLE CONSOLE </h3>
+                        <p>
+                            La configuration à l’aide du câble console se fait comme suit :<br>
+                            . Déconnecter le PC du switch<br>
+                            . Connecte le câble console au port « RS » du PC et le connecte ensuite au port « CONSOLE » du routeur
+                        </p>
+                        <img src="../image/ninetieth.png" alt="" >
+                        <p>. Entrer dans le terminal du PC et entrer les commandes comme présenté dans les images ci-dessous </p>
+                        <p>   .Terminal PC1 </p>
+                        <img src="../image/thirdieth.png" alt="" >
+                        <p> .Terminal PC2 </p>
+                        <h3> 3. CONFIGURATION A L’AIDE DES COMMANDES</h3>
+                        <p>
+                            La configuration à l’aide des commandes se fait comme suit : <br>
+                            . Entrer dans l’interface du routeur <br>
+                            . Cliquer sur l’onglet « CLI » du routeur <br>
+                            . Entrer les commandes qui sont présentés dans les images ci-dessous <br>
+                        </p>
+                        <p> .Routeur 0 </p>
+                        <img src="../image/thirdiethO (2).png" alt="" >
+                        <p> .Routeur1 </p>
+                        <img src="../image/thirdiethT.png" alt="">
+                    </div>
+                    <div id="phas4" class="prop">
+                        <h2>  D.CONFIGURATION DES TABLES DE ROUTAGES </h2>
+                        <h3>   1.CONFIGURATION STATIQUE </h3>
+                        <p>
+                            La configuration de manière statique se fait à l’aide de la commande « IP ROUTE » que l’on entre dans l’onglet « CLI » du routeur et dont la syntaxe est présentée dans les images suivantes 
+                        </p>
+                        <p> .Routeur0 </p>
+                        <img src="../image/thirdiethTh.png" alt="">
+                        <p> .Routeur 1 </p>
+                        <img src="../image/thirdiethF.png" alt="">
+                        <h3>
+                            2.CONFIGURATION DYNAMIQUE
+                        </h3>
+                        <p>
+                            La configuration de manière statique se fait à l’aide de la commande « IP ROUTE » que l’on entre dans l’onglet « CLI » du routeur et dont la syntaxe est présentée dans les images suivantes :
+                        </p>
+                        <p>.Routeur 0 </p>
+                        <img src="../image/thirdiethFi.png" alt="">
+                        <p> .Routeur 1</p>
+                        <img src="../image/thirdiethS.png" alt="">
+                    </div>
+                    <div id="phas5" class="prop">
+                        <h2>E.CONFIGURATION DU SERVEUR WEB ET DNS</h2>
+                        <h3> 1.CREATION DU SITE WEB STATIQUE </h3>
+                        <p>
+                            Pour créer mon site web, je suis les étapes suivantes :<br>
+                            . Attribuer une adresse au mon serveur web <br>
+                            . Se rendre dans l’onglet « SERVICES »de mon serveur puis je clique sur « HTTP » <br>
+                            . Enfin cliquer sur « ON » puis sur « INDEX » et saisir son code,<br>
+                        </p>
+                        <img src="../image/thirdiethSe.png" alt="">
+                        <p>
+                            .Interface du site web
+                        </p>
+                        <p>
+                            En essayant de se connecter au web a partir du PC 3 ,l’ interface  de notre site s’affiche
+                        </p>
+                        <img src="../image/thirdiethE.png" alt="">
+                        <h3>3.CONFIGURATION DU SERVEUR DNS</h3>
+                        <p>
+                            Apres avoir attribuer une adresse IP au seveur web et apres avoir entrer cette adresse dans l’onglet config de tous les ordinateurs du reseau,on suit les etapes suivantes :<br>
+                            .Cliquer sur l’onglet « SERVICES » puis sur « DNS »<br>
+                            .Entrer l’adresse du serveur web et le nomdu domaine <br>
+                            .Enfin cliquer sur « SAVE »<br>
+                            L’image ci-dessous presente l’interface du serveur DNS apres sa configuration
+                        </p>
+                        <img src="../image/thirdiethN.png" alt="" >
+                        <h3>
+                            4. ACCES AU SITE A PARTIR DU PC 3 EN TAPANT LE NOM DU DOMAINE
+                        </h3>
+                        <img src="../image/fourthiethO.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="imgflagg">
+                    <img src="../image/IMG-20231019-WA0010.jpg" alt="" class="imgfleur">
+                </div> 
+                <div class="contact">
+                    <button>
+                        <a href="mailto: allforinf@gmail.com">ECRIVEZ-NOUS</a>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
